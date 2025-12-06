@@ -1,3 +1,17 @@
+# Option A Deployment Guide: Multi-Scenario Comparison Dashboard
+
+## What You're Deploying
+
+A web app that compares **3 optimization scenarios simultaneously** - something Excel Solver cannot do efficiently. This demonstrates the power of Python for operations research.
+
+**App Features:**
+- Side-by-side comparison of 3 different scenarios
+- Automatic optimization of all scenarios
+- Visual comparison charts (throughput, product mix)
+- Automatic insights and recommendations
+- Real-time updates when parameters change
+
+---
 # Option B Deployment Guide: Monte Carlo Simulation
 
 ## What You're Deploying
