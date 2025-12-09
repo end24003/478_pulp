@@ -36,7 +36,7 @@ st.session_state.scenarios[selected]['profit_b'] = st.sidebar.slider("Profit B (
 
 # Helper: reset all widget keys to defaults so sliders/text inputs show the reset values
 def apply_defaults_to_widget_state():
-    for sid, params in DEFAULT_SCENARIOS.items():
+    for sid, params in scenarios.items():
         st.session_state[f"n_{sid}"]  = params['name']
         st.session_state[f"h_{sid}"]  = params['heat_treatment']
         st.session_state[f"m_{sid}"]  = params['machining']
@@ -48,7 +48,7 @@ def apply_defaults_to_widget_state():
 
 # Reset button: no rerun needed—button interaction already reruns the script
 if st.sidebar.button("Reset All", use_container_width=True):
-    st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
+    st.session_state.scenarios = deepcopy(scenarios)
     apply_defaults_to_widget_state()
 
 # Solve all scenarios
