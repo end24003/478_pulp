@@ -81,18 +81,14 @@ def apply_defaults_to_widget_state():
 if st.sidebar.button("Reset All", use_container_width=True):
     # Clear widget states (sliders/text inputs)
     for sid, params in DEFAULT_SCENARIOS.items():
-       fst.session_state.scenarios[selected]['name'] = st.sidebar.text_input("Name:", value=st.session_state.scenarios[selected]['name'], key=f"n_{selected}")
-st.session_state.scenarios[selected]['heat_treatment'] = st.sidebar.slider("Heat Treatment:", 80, 240, st.session_state.scenarios[selected]['heat_treatment'], 10, key=f"h_{selected}")
-st.session_state.scenarios[selected]['machining'] = st.sidebar.slider("Machining:", 100, 300, st.session_state.scenarios[selected]['machining'], 10, key=f"m_{selected}")
-st.session_state.scenarios[selected]['assembly'] = st.sidebar.slider("Assembly:", 100, 300, st.session_state.scenarios[selected]['assembly'], 10, key=f"a_{selected}")
-st.session_state.scenarios[selected]['demand_a'] = st.sidebar.slider("Demand A:", 0, 100, st.session_state.scenarios[selected]['demand_a'], 5, key=f"da_{selected}")
-st.session_state.scenarios[selected]['demand_b'] = st.sidebar.slider("Demand B:", 0, 150, st.session_state.scenarios[selected]['demand_b'], 5, key=f"db_{selected}")
-st.session_state.scenarios[selected]['profit_a'] = st.sidebar.slider("Profit A ($):", 50, 150, st.session_state.scenarios[selected]['profit_a'], 5, key=f"pa_{selected}")
-st.session_state.scenarios[selected]['profit_b'] = st.sidebar.slider("Profit B ($):", 30, 100, st.session_state.scenarios[selected]['profit_b'], 5, key=f"pb_{selected}")or prefix in ["n", "h", "m", "a", "da", "db", "pa", "pb"]:
-            key = f"{prefix}_{sid}"
-            if key in st.session_state:
-                del st.session_state[key]
-
+       st.session_state.scenarios[selected]['name'] = st.sidebar.text_input("Name:", value=st.session_state.scenarios[selected]['name'], key=f"n_{selected}")
+       st.session_state.scenarios[selected]['heat_treatment'] = st.sidebar.slider("Heat Treatment:", 80, 240, st.session_state.scenarios[selected]['heat_treatment'], 10, key=f"h_{selected}")
+       st.session_state.scenarios[selected]['machining'] = st.sidebar.slider("Machining:", 100, 300, st.session_state.scenarios[selected]['machining'], 10, key=f"m_{selected}")
+       st.session_state.scenarios[selected]['assembly'] = st.sidebar.slider("Assembly:", 100, 300, st.session_state.scenarios[selected]['assembly'], 10, key=f"a_{selected}")
+       st.session_state.scenarios[selected]['demand_a'] = st.sidebar.slider("Demand A:", 0, 100, st.session_state.scenarios[selected]['demand_a'], 5, key=f"da_{selected}")
+       st.session_state.scenarios[selected]['demand_b'] = st.sidebar.slider("Demand B:", 0, 150, st.session_state.scenarios[selected]['demand_b'], 5, key=f"db_{selected}")
+       st.session_state.scenarios[selected]['profit_a'] = st.sidebar.slider("Profit A ($):", 50, 150, st.session_state.scenarios[selected]['profit_a'], 5, key=f"pa_{selected}")
+       st.session_state.scenarios[selected]['profit_b'] = st.sidebar.slider("Profit B ($):", 30, 100, st.session_state.scenarios[selected]['profit_b'], 5, key=f"pb_{selected}")
     # Reset scenarios dictionary
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
 
