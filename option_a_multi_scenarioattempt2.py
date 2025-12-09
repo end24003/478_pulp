@@ -79,6 +79,11 @@ def apply_defaults_to_widget_state():
 # Reset button: no rerun needed—button interaction already reruns the script
 # Reset button
 if st.sidebar.button("Reset All", use_container_width=True):
+    for sid in DEFAULT_SCENARIOS.keys():
+        for prefix in ["n", "h", "m", "a", "da", "db", "pa", "pb"]:
+            key = f"{prefix}_{sid}"
+            if key in st.session_state:
+                del st.session_state[key]
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
     # No need to manually reset widget keys — Streamlit reruns and reloads defaults
 
