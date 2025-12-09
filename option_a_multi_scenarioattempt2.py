@@ -89,9 +89,6 @@ if st.sidebar.button("Reset All", use_container_width=True):
     # Reset scenarios dictionary
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
 
-    # Force rerun so sliders/text inputs reload with defaults
-    st.experimental_rerun()
-
 
 # Solve all scenarios
 results = {}
