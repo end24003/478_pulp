@@ -82,7 +82,7 @@ def apply_defaults_to_widget_state():
 if st.sidebar.button("Reset All", use_container_width=True):
     # Clear widget states (sliders/text inputs)
     for sid, params in DEFAULT_SCENARIOS.items():
-        st.runtime.legacy_caching.clear_cache()
+       st.runtime.legacy_caching.clear_cache()
        for prefix in ["n", "h", "m", "a", "da", "db", "pa", "pb"]:
             key = f"{prefix}_{sid}"
             if key in st.session_state:
