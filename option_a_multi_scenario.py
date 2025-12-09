@@ -39,7 +39,10 @@ if st.sidebar.button("Reset All", use_container_width=True):
         'scenario2': {'name': 'Elevate Bottleneck', 'heat_treatment': 200, 'machining': 200, 'assembly': 180, 'demand_a': 50, 'demand_b': 80, 'profit_a': 90, 'profit_b': 60},
         'scenario3': {'name': 'Premium Product A', 'heat_treatment': 160, 'machining': 200, 'assembly': 180, 'demand_a': 50, 'demand_b': 80, 'profit_a': 140, 'profit_b': 60}
     }
-    st.rerun()
+    try:
+        st.rerun()  # Streamlit >=1.27
+    except AttributeError:
+        st.experimental_rerun()  # older versions
 
 # Solve all scenarios
 results = {}
