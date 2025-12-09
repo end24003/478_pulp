@@ -4,6 +4,7 @@ Option A: Multi-Scenario Comparison
 import streamlit as st
 import plotly.graph_objects as go
 from the_goal_optimization import create_goal_optimization_model
+from copy import deepcopy
 
 st.set_page_config(page_title="Multi-Scenario Comparison", layout="wide")
 
