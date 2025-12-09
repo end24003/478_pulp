@@ -33,16 +33,22 @@ st.session_state.scenarios[selected]['demand_b'] = st.sidebar.slider("Demand B:"
 st.session_state.scenarios[selected]['profit_a'] = st.sidebar.slider("Profit A ($):", 50, 150, st.session_state.scenarios[selected]['profit_a'], 5, key=f"pa_{selected}")
 st.session_state.scenarios[selected]['profit_b'] = st.sidebar.slider("Profit B ($):", 30, 100, st.session_state.scenarios[selected]['profit_b'], 5, key=f"pb_{selected}")
 
+# Helper: reset all widget keys to defaults so sliders/text inputs show the reset values
+def apply_defaults_to_widget_state():
+    for sid, params in DEFAULT_SCENARIOS.items():
+        st.session_state[f"n_{sid}"]  = params['name']
+        st.session_state[f"h_{sid}"]  = params['heat_treatment']
+        st.session_state[f"m_{sid}"]  = params['machining']
+        st.session_state[f"a_{sid}"]  = params['assembly']
+        st.session_state[f"da_{sid}"] = params['demand_a']
+        st.session_state[f"db_{sid}"] = params['demand_b']
+        st.session_state[f"pa_{sid}"] = params['profit_a']
+        st.session_state[f"pb_{sid}"] = params['profit_b']
+
+# Reset button: no rerun needed—button interaction already reruns the script
 if st.sidebar.button("Reset All", use_container_width=True):
-    st.session_state.scenarios = {
-        'scenario1': {'name': 'Baseline', 'heat_treatment': 160, 'machining': 200, 'assembly': 180, 'demand_a': 50, 'demand_b': 80, 'profit_a': 90, 'profit_b': 60},
-        'scenario2': {'name': 'Elevate Bottleneck', 'heat_treatment': 200, 'machining': 200, 'assembly': 180, 'demand_a': 50, 'demand_b': 80, 'profit_a': 90, 'profit_b': 60},
-        'scenario3': {'name': 'Premium Product A', 'heat_treatment': 160, 'machining': 200, 'assembly': 180, 'demand_a': 50, 'demand_b': 80, 'profit_a': 140, 'profit_b': 60}
-    }
-    try:
-        st.rerun()  # Streamlit >=1.27
-    except AttributeError:
-        st.experimental_rerun()  # older versions
+    st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
+    apply_defaults_to_widget_state()
 
 # Solve all scenarios
 results = {}
