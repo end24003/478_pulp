@@ -54,7 +54,7 @@ st.sidebar.header("Configure Scenarios")
 selected = st.sidebar.radio("Edit Scenario:", ['scenario1', 'scenario2', 'scenario3'], 
                             format_func=lambda x: st.session_state.scenarios[x]['name'])
 
-st.sidebar.subheader(f"Edit: {st.session_state.scenarios[selected]['name']}")
+st.sidebar.subheader(f"Edit: {st.session_state.DEFAULT_SCENARIOS[selected]['name']}")
 st.session_state.scenarios[selected]['name'] = st.sidebar.text_input("Name:", value=st.session_state.scenarios[selected]['name'], key=f"n_{selected}")
 st.session_state.scenarios[selected]['heat_treatment'] = st.sidebar.slider("Heat Treatment:", 80, 240, st.session_state.scenarios[selected]['heat_treatment'], 10, key=f"h_{selected}")
 st.session_state.scenarios[selected]['machining'] = st.sidebar.slider("Machining:", 100, 300, st.session_state.scenarios[selected]['machining'], 10, key=f"m_{selected}")
