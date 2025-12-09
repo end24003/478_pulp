@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.graph_objects as go
 from the_goal_optimization import create_goal_optimization_model
 from copy import deepcopy
+from streamlit import caching
 
 st.set_page_config(page_title="Multi-Scenario Comparison", layout="wide")
 
@@ -81,13 +82,14 @@ def apply_defaults_to_widget_state():
 if st.sidebar.button("Reset All", use_container_width=True):
     # Clear widget states (sliders/text inputs)
     for sid, params in DEFAULT_SCENARIOS.items():
-        st.caching.clear_cache()
+       caching.clear_cache()
         for prefix in ["n", "h", "m", "a", "da", "db", "pa", "pb"]:
             key = f"{prefix}_{sid}"
             if key in st.session_state:
                 del st.session_state[key]
 
     # Reset scenarios dictionary
+    st.experimental_rerun()
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
 
 
