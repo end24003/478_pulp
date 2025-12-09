@@ -79,8 +79,8 @@ def apply_defaults_to_widget_state():
 # Reset button: no rerun needed—button interaction already reruns the script
 # Reset button
 if st.sidebar.button("Reset All", use_container_width=True):
-    # Clear widget states
-    for sid in DEFAULT_SCENARIOS.keys():
+    # Clear widget states (sliders/text inputs)
+    for sid, params in DEFAULT_SCENARIOS.items():
         for prefix in ["n", "h", "m", "a", "da", "db", "pa", "pb"]:
             key = f"{prefix}_{sid}"
             if key in st.session_state:
