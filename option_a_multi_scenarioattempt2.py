@@ -77,9 +77,10 @@ def apply_defaults_to_widget_state():
         st.session_state[f"pb_{sid}"] = params['profit_b']
 
 # Reset button: no rerun needed—button interaction already reruns the script
+# Reset button
 if st.sidebar.button("Reset All", use_container_width=True):
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
-    apply_defaults_to_widget_state()
+    # No need to manually reset widget keys — Streamlit reruns and reloads defaults
 
 # Solve all scenarios
 results = {}
