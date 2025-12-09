@@ -48,7 +48,6 @@ DEFAULT_SCENARIOS = {
 # Initialize scenarios
 if "scenarios" not in st.session_state:
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
-    }
 
 # Sidebar
 st.sidebar.header("Configure Scenarios")
