@@ -87,7 +87,6 @@ if st.sidebar.button("Reset All", use_container_width=True):
                 del st.session_state[key]
 
     # Reset scenarios dictionary
-    st.experimental_rerun()
     st.session_state.scenarios = deepcopy(DEFAULT_SCENARIOS)
 
 
